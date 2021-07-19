@@ -12,6 +12,7 @@ public class ErrorPresenter {
 
     private LocalDateTime dateTime;
     private HttpStatus httpStatus;
+    private String error;
     private String message;
 
 }

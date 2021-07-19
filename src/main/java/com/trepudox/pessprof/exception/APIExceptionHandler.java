@@ -15,9 +15,10 @@ public class APIExceptionHandler {
     public ResponseEntity<ErrorPresenter> handleException(Exception exception) {
         LocalDateTime dateTime = LocalDateTime.now();
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        String error = exception.getClass().getSimpleName().replace("Exception", "");
         String message = exception.getMessage();
 
-        ErrorPresenter errorPresenter = new ErrorPresenter(dateTime, httpStatus, message);
+        ErrorPresenter errorPresenter = new ErrorPresenter(dateTime, httpStatus, error, message);
 
         exception.printStackTrace();
 
