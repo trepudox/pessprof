@@ -18,7 +18,7 @@ public class APIExceptionHandler {
         String error = exception.getClass().getSimpleName().replace("Exception", "");
         String message = exception.getMessage();
 
-        ErrorPresenter errorPresenter = new ErrorPresenter(error, message, httpStatus, dateTime);
+        ErrorPresenter errorPresenter = new ErrorPresenter(error, message, httpStatus);
 
         exception.printStackTrace();
 
