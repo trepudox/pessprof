@@ -1,5 +1,6 @@
 package com.trepudox.pessprof.service.impl;
 
+import com.trepudox.pessprof.exception.profissao.ProfissaoNotFoundException;
 import com.trepudox.pessprof.model.Profissao;
 import com.trepudox.pessprof.repository.ProfissaoRepository;
 import com.trepudox.pessprof.service.ProfissaoService;
@@ -16,7 +17,8 @@ public class ProfissaoServiceImpl implements ProfissaoService {
 
     @Override
     public Profissao findById(Long id) {
-        return null;
+        return profissaoRepository.findById(id)
+                .orElseThrow(() -> new ProfissaoNotFoundException("Nenhuma profissão foi encontrada com esse ID."));
     }
 
     @Override
