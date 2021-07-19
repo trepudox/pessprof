@@ -12,6 +12,7 @@ import java.time.LocalDate;
 public class Pessoa {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -20,7 +21,7 @@ public class Pessoa {
     @Column(nullable = false)
     private LocalDate dataNasc;
 
-    @ManyToOne()
+    @ManyToOne(optional = false, targetEntity = Profissao.class)
     @JsonIgnoreProperties({"pessoas"})
     private Profissao profissao;
 
