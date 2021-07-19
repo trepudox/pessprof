@@ -23,7 +23,7 @@ public class Profissao {
     @Column(nullable = false)
     private Double salario;
 
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "profissao", cascade = CascadeType.ALL, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnoreProperties({"profissao"})
     private List<Pessoa> pessoas;
