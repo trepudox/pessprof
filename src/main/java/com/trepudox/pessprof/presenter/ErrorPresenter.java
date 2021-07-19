@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @Data @NoArgsConstructor @AllArgsConstructor
 public class ErrorPresenter {
 
-    private LocalDateTime dateTime;
-    private HttpStatus httpStatus;
     private String error;
     private String message;
+    private HttpStatus httpStatus;
+    private LocalDateTime dateTime;
 
 }
