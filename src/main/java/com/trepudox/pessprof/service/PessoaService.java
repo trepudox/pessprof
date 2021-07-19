@@ -11,7 +11,7 @@ public interface PessoaService {
 
     List<Pessoa> findAllByNome(String nome);
 
-    List<Profissao> findAll();
+    List<Pessoa> findAll();
 
     Pessoa create(Pessoa pessoa);
 
