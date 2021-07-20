@@ -13,7 +13,6 @@ public class APIExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<ErrorPresenter> handleException(Exception exception) {
-        LocalDateTime dateTime = LocalDateTime.now();
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
         String error = exception.getClass().getSimpleName().replace("Exception", "");
         String message = exception.getMessage();
