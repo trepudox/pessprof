@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface ProfissaoService {
 
-    Profissao findById(Long id);
+    List<Profissao> findAll();
 
     List<Profissao> findAllByNome(String nome);
 
-    List<Profissao> findAll();
+    Profissao findById(Long id);
 
     Profissao create(Profissao profissao);
 

@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface PessoaService {
 
-    Pessoa findById(Long id);
+    List<Pessoa> findAll();
 
     List<Pessoa> findAllByNome(String nome);
 
-    List<Pessoa> findAll();
+    Pessoa findById(Long id);
 
     Pessoa create(Pessoa pessoa);
 

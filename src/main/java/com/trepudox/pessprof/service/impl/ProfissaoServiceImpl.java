@@ -16,9 +16,8 @@ public class ProfissaoServiceImpl implements ProfissaoService {
     private ProfissaoRepository profissaoRepository;
 
     @Override
-    public Profissao findById(Long id) {
-        return profissaoRepository.findById(id)
-                .orElseThrow(() -> new ProfissaoNotFoundException("Nenhuma profissão foi encontrada com esse ID."));
+    public List<Profissao> findAll() {
+        return null;
     }
 
     @Override
@@ -27,8 +26,9 @@ public class ProfissaoServiceImpl implements ProfissaoService {
     }
 
     @Override
-    public List<Profissao> findAll() {
-        return null;
+    public Profissao findById(Long id) {
+        return profissaoRepository.findById(id)
+                .orElseThrow(() -> new ProfissaoNotFoundException("Nenhuma profissão foi encontrada com esse ID."));
     }
 
     @Override

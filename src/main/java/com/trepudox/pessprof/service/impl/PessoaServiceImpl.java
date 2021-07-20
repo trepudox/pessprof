@@ -23,9 +23,13 @@ public class PessoaServiceImpl implements PessoaService {
     private ProfissaoService profissaoService;
 
     @Override
-    public Pessoa findById(Long id) {
-        return pessoaRepository.findById(id)
-                .orElseThrow(() -> new PessoaNotFoundException("Nenhuma pessoa foi encontrada com esse ID."));
+    public List<Pessoa> findAll() {
+        List<Pessoa> lista = pessoaRepository.findAll();
+
+        if (lista.isEmpty())
+            throw new PessoaNotFoundException("Nenhuma pessoa foi encontrada com esse nome.");
+
+        return lista;
     }
 
     @Override
@@ -39,13 +43,9 @@ public class PessoaServiceImpl implements PessoaService {
     }
 
     @Override
-    public List<Pessoa> findAll() {
-        List<Pessoa> lista = pessoaRepository.findAll();
-
-        if (lista.isEmpty())
-            throw new PessoaNotFoundException("Nenhuma pessoa foi encontrada com esse nome.");
-
-        return lista;
+    public Pessoa findById(Long id) {
+        return pessoaRepository.findById(id)
+                .orElseThrow(() -> new PessoaNotFoundException("Nenhuma pessoa foi encontrada com esse ID."));
     }
 
     @Override
