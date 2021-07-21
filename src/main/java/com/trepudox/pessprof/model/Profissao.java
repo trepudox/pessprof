@@ -1,7 +1,9 @@
 package com.trepudox.pessprof.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "profissao")
-@Data
+@Data @NoArgsConstructor @AllArgsConstructor
 public class Profissao {
 
     @Id
