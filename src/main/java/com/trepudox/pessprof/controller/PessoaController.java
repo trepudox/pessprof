@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -39,6 +38,11 @@ public class PessoaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.create(pessoa));
     }
 
+    @PostMapping(value = "/mirror", consumes = {"application/json"}, produces = {"application/json"})
+    public ResponseEntity<Pessoa> mirror(@RequestBody Pessoa pessoa) {
+        return ResponseEntity.status(HttpStatus.OK).body(pessoa);
+    }
+
     @PutMapping
     public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoa) {
         return ResponseEntity.status(HttpStatus.OK).body(pessoaService.update(pessoa));
@@ -47,7 +51,7 @@ public class PessoaController {
     @DeleteMapping(path = "/id/{id}")
     public ResponseEntity<ResponsePresenter> delete(@PathVariable Long id) {
         pessoaService.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(new OKPresenter("Pessoa deletada com sucesso"));
+        return ResponseEntity.status(HttpStatus.OK).body(new OKPresenter("Pessoa deletada com sucesso."));
     }
 
 }
