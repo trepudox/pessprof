@@ -27,7 +27,7 @@ public class PessoaServiceImpl implements PessoaService {
         List<Pessoa> lista = pessoaRepository.findAll();
 
         if (lista.isEmpty())
-            throw new PessoaNotFoundException("Nenhuma pessoa foi encontrada com esse nome.");
+            throw new PessoaNotFoundException("Nenhuma pessoa foi encontrada.");
 
         return lista;
     }
