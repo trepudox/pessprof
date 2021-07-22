@@ -7,7 +7,6 @@ import com.trepudox.pessprof.model.Profissao;
 import com.trepudox.pessprof.repository.PessoaRepository;
 import com.trepudox.pessprof.service.PessoaService;
 import com.trepudox.pessprof.service.ProfissaoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,11 +15,13 @@ import java.util.List;
 @Service
 public class PessoaServiceImpl implements PessoaService {
 
-    @Autowired
     private PessoaRepository pessoaRepository;
-
-    @Autowired
     private ProfissaoService profissaoService;
+
+    public PessoaServiceImpl(PessoaRepository pessoaRepository, ProfissaoService profissaoService) {
+        this.pessoaRepository = pessoaRepository;
+        this.profissaoService = profissaoService;
+    }
 
     @Override
     public List<Pessoa> findAll() {

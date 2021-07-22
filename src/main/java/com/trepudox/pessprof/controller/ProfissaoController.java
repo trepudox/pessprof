@@ -4,7 +4,6 @@ import com.trepudox.pessprof.model.Profissao;
 import com.trepudox.pessprof.presenter.OKPresenter;
 import com.trepudox.pessprof.presenter.ResponsePresenter;
 import com.trepudox.pessprof.service.ProfissaoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +14,11 @@ import java.util.List;
 @RequestMapping("/profissoes")
 public class ProfissaoController {
 
-    @Autowired
     private ProfissaoService profissaoService;
+
+    public ProfissaoController(ProfissaoService profissaoService) {
+        this.profissaoService = profissaoService;
+    }
 
     @GetMapping(path = "/all")
     public ResponseEntity<List<Profissao>> getAll() {
