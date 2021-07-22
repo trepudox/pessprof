@@ -14,13 +14,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-@Qualifier("pessoaServiceImpl")
-public class PessoaServiceImpl implements PessoaService {
+@Qualifier("pessoaServiceImpl2")
+public class PessoaServiceImpl2 implements PessoaService {
 
     private PessoaRepository pessoaRepository;
     private ProfissaoService profissaoService;
 
-    public PessoaServiceImpl(PessoaRepository pessoaRepository, ProfissaoService profissaoService) {
+    public PessoaServiceImpl2(PessoaRepository pessoaRepository, ProfissaoService profissaoService) {
         this.pessoaRepository = pessoaRepository;
         this.profissaoService = profissaoService;
     }
@@ -28,7 +28,7 @@ public class PessoaServiceImpl implements PessoaService {
     @Override
     public List<Pessoa> findAll() {
         List<Pessoa> lista = pessoaRepository.findAll();
-
+        System.out.println("FIND ALL!");
         if (lista.isEmpty())
             throw new PessoaNotFoundException("Nenhuma pessoa foi encontrada.");
 

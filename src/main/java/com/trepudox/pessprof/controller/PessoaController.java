@@ -4,6 +4,8 @@ import com.trepudox.pessprof.model.Pessoa;
 import com.trepudox.pessprof.presenter.OKPresenter;
 import com.trepudox.pessprof.presenter.ResponsePresenter;
 import com.trepudox.pessprof.service.PessoaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +16,9 @@ import java.util.List;
 @RequestMapping("/pessoas")
 public class PessoaController {
 
+    @Autowired
+    @Qualifier("pessoaServiceImpl2")
     private PessoaService pessoaService;
-
-    public PessoaController(PessoaService pessoaService) {
-        this.pessoaService = pessoaService;
-    }
 
     @GetMapping(path = "/all")
     public ResponseEntity<List<Pessoa>> getAll() {
