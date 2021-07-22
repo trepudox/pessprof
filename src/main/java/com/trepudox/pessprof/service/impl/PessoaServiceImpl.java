@@ -7,10 +7,11 @@ import com.trepudox.pessprof.model.Profissao;
 import com.trepudox.pessprof.repository.PessoaRepository;
 import com.trepudox.pessprof.service.PessoaService;
 import com.trepudox.pessprof.service.ProfissaoService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Service
 public class PessoaServiceImpl implements PessoaService {
@@ -24,23 +25,23 @@ public class PessoaServiceImpl implements PessoaService {
     }
 
     @Override
-    public List<Pessoa> findAll() {
-        List<Pessoa> lista = pessoaRepository.findAll();
+    public Page<Pessoa> findAll(Pageable pageable) {
+        Page<Pessoa> page = pessoaRepository.findAll(pageable);
 
-        if (lista.isEmpty())
+        if (page.isEmpty())
             throw new PessoaNotFoundException("Nenhuma pessoa foi encontrada.");
 
-        return lista;
+        return page;
     }
 
     @Override
-    public List<Pessoa> findAllByNome(String nome) {
-        List<Pessoa> lista = pessoaRepository.findAllByNomeContainingIgnoreCase(nome);
+    public Page<Pessoa> findAllByNome(Pageable pageable, String nome) {
+        Page<Pessoa> page = pessoaRepository.findAllByNomeContainingIgnoreCase(pageable, nome);
 
-        if (lista.isEmpty())
+        if (page.isEmpty())
             throw new PessoaNotFoundException("Nenhuma pessoa foi encontrada com esse nome.");
 
-        return lista;
+        return page;
     }
 
     @Override

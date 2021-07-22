@@ -4,6 +4,8 @@ import com.trepudox.pessprof.model.Pessoa;
 import com.trepudox.pessprof.presenter.OKPresenter;
 import com.trepudox.pessprof.presenter.ResponsePresenter;
 import com.trepudox.pessprof.service.PessoaService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +23,8 @@ public class PessoaController {
     }
 
     @GetMapping(path = "/all")
-    public ResponseEntity<List<Pessoa>> getAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findAll());
+    public ResponseEntity<Page<Pessoa>> getAll(Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findAll(pageable));
     }
 
     @GetMapping(path = "/id/{id}")
@@ -31,8 +33,8 @@ public class PessoaController {
     }
 
     @GetMapping(path = "/nome/{nome}")
-    public ResponseEntity<List<Pessoa>> getByNome(@PathVariable String nome) {
-        return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findAllByNome(nome));
+    public ResponseEntity<Page<Pessoa>> getByNome(Pageable pageable, @PathVariable String nome) {
+        return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findAllByNome(pageable, nome));
     }
 
     @PostMapping
