@@ -64,7 +64,7 @@ public class PessoaServiceImpl implements PessoaService {
     public Pessoa update(Pessoa pessoa) {
         Pessoa pessoaProcurada = findById(pessoa.getId());
 
-        Pessoa pessoaFinal = validaCampos(pessoaProcurada);
+        Pessoa pessoaFinal = validaCampos(pessoa);
 
         pessoaFinal.setId(pessoaProcurada.getId());
         pessoaFinal.setProfissao(pessoaProcurada.getProfissao());

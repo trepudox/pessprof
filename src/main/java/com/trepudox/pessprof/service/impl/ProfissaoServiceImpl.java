@@ -56,7 +56,7 @@ public class ProfissaoServiceImpl implements ProfissaoService {
     public Profissao update(Profissao profissao) {
         Profissao profissaoProcurada = findById(profissao.getId());
 
-        Profissao profissaoFinal = validaCampos(profissaoProcurada);
+        Profissao profissaoFinal = validaCampos(profissao);
 
         profissaoFinal.setId(profissaoProcurada.getId());
 
